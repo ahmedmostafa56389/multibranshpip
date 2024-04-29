@@ -1,9 +1,9 @@
-pipeline {
+opipeline {
     agent any
     
     environment {
         dockerHubCredentialsID	    = 'DockerHub'  		    			// DockerHub credentials ID.
-        imageName   		    = 'ibrahimadel10/nti-app'     			// DockerHub repo/image name.
+        imageName   		    = 'ahmedmoo/nti-app'     			// DockerHub repo/image name.
     }
     
     stages {       
