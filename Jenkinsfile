@@ -30,6 +30,18 @@ pipeline {
             }
         }
 
+	stage ('Editin the image name') {
+		steps {
+			script {
+
+				   dir('k8s') {	
+					  sh "sed -i 's|image:.*|image: ${imageName}|g' deployment.yaml"
+			
+				   }
+			}
+		}
+	}
+
     }
 
     post {
