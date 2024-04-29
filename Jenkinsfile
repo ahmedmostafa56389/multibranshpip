@@ -7,7 +7,14 @@ pipeline {
 	k8s = ' KubeCred '
     }
     
-    stages {       
+    stages {    
+	stage ('test') {
+		steps {
+			script {
+				sh 'pytest'
+			}
+		}
+	}
     
         stage('Build Docker Image') {
             steps {
