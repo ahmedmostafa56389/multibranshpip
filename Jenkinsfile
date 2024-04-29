@@ -53,9 +53,11 @@ pipeline {
 	stage (' deploy ' ) {
 		steps {
 			script {
+				dir('k8s'){
 				  withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
-					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ./k8s"
+					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ."
 			          }
+				}
 			}
 		}
 	}
