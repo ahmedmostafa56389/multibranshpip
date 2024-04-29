@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploym
+  name: deploydev
+  namespace: dev
 spec:
   replicas: 4
   selector:
@@ -15,10 +16,6 @@ spec:
       containers:
         - name: multi-pipline
           image: nginx
-          resources:
-            limits:
-              memory: 128Mi
-              cpu: 500m
           ports:
             - containerPort: 8090
   strategy:
