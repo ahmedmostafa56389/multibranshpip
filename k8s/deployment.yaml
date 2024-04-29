@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploym
+  name: deploytest
+  namespace: test
 spec:
   replicas: 4
   selector:
