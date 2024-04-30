@@ -9,12 +9,13 @@ pipeline {
     
     stages {   
 
-	stage (' production ')
+	stage (' production ') {
 	    steps {
 		    script {
 		    	echo " This is the production branch"
 	    	    }
 	    }
+	}
     
         stage('Build Docker Image') {
             steps {
