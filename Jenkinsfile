@@ -8,10 +8,10 @@ pipeline {
     }
     
     stages {    
-	stage(' production ' ) {
+	stage(' test ' ) {
 		steps { 
 			script {
-				echo " production "
+				echo " testing branch "
 			}
 		}
 	}
