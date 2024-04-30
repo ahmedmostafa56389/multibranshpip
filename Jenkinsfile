@@ -42,7 +42,7 @@ pipeline {
 		steps {
 			script {
 
-				   dir('.') {	
+				   dir('k8s') {	
 					  sh "sed -i 's|image:.*|image: ${imageName}|g' deployment.yaml"
 			
 				   }
@@ -53,7 +53,7 @@ pipeline {
 	stage (' deploy ' ) {
 		steps {
 			script {
-				dir('.'){
+				dir('k8s'){
 				  withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
 					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f  deployment.yaml  --validate=false"
 			          }
