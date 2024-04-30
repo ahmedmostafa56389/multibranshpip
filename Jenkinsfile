@@ -4,10 +4,17 @@ pipeline {
     environment {
         dockerHubCredentialsID	    = 'DockerHub'  		    			// DockerHub credentials ID.
         imageName   		    = 'ahmedmoo/nti-app'     			// DockerHub repo/image name.
-	k8s = ' KubeCred '
+	k8s = ' cred2 '
     }
     
-    stages {       
+    stages {   
+
+	stage (' production ')
+	    steps {
+		    script {
+		    	echo " This is the production branch"
+	    	    }
+	    }
     
         stage('Build Docker Image') {
             steps {
@@ -47,11 +54,31 @@ pipeline {
 		steps {
 			script {
 				  withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
-					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ./k8s"
+					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ./k8s/deployment.yaml"
 			          }
 			}
 		}
 	}
+
+	stage (' expose the service ' ) {
+	    steps {
+		    script {
+			    withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
+				    sh " export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ./k8s/service.yaml"
+			    }
+		    }
+	    }
+	}
+
+	    stage (' create an ingress ') {
+		    steps {
+			    script {
+				    withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
+					    sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f ./k8s/ingress.yaml
+				    }
+			    }
+		    }
+	    }
 	
 
     }
