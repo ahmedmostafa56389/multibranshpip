@@ -3,20 +3,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploydev
+  name: deployment-developer
   namespace: dev
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: multi
+      app: developer
   template:
     metadata:
       labels:
-        app: multi
+        app: develepor
     spec:
       containers:
-        - name: multi-pipline
+        - name: container-developer
           image: nginx
           ports:
             - containerPort: 8090
