@@ -7,7 +7,15 @@ pipeline {
 	k8s = ' KubeCred '
     }
     
-    stages {       
+    stages {    
+
+	stage (' Developing branch ') {
+		steps {
+			script {
+				echo " This is the developing stage "
+			}
+		}
+	}
     
         stage('Build Docker Image') {
             steps {
