@@ -55,7 +55,7 @@ pipeline {
 			script {
 				dir('k8s'){
 				  withCredentials([file(credentialsId: "${k8s}", variable: 'KUBECONFIG_FILE')]) {
-					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f  deployment.yaml  --validate=false"
+					      sh "export KUBECONFIG=${KUBECONFIG_FILE} && kubectl apply -f  deployment.yaml"
 			          }
 				}
 			}
