@@ -1,22 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploym
+  name: deployment-test
   namespace: test
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: python
+      app: my-app
   template:
     metadata:
       labels:
-        app: python
+        app: my-app
     spec:
       containers:
-        - name: jenk-lap
-          image: nginx
-          ports:
-            - containerPort: 8090
-  strategy:
-    type: RollingUpdate
+      - name: my-app-container
+        image: your-image:tag
+        resources:                
+          requests:
+            memory: "64Mi"        
+            cpu: "250m"           
+          limits:
+            memory: "128Mi"       
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+
