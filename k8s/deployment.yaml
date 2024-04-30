@@ -1,17 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploytest
+  name: deploym
   namespace: test
 spec:
   replicas: 4
+  selector:
+    matchLabels:
+      app: python
   template:
     metadata:
       labels:
-        app: multi
+        app: python
     spec:
       containers:
-        - name: multi-pipline
+        - name: jenk-lap
           image: nginx
           resources:
             limits:
