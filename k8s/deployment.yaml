@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployprod
+  name: deployment-production
   namespace: prod
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: multi
+      app: production
   template:
     metadata:
       labels:
-        app: multi
+        app: production
     spec:
       containers:
-        - name: multi-pipline
+        - name: container-production
           image: nginx
           resources:
             limits:
