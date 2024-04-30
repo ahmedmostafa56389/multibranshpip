@@ -4,14 +4,14 @@ pipeline {
     environment {
         dockerHubCredentialsID	    = 'DockerHub'  		    			// DockerHub credentials ID.
         imageName   		    = 'ahmedmoo/nti-app'     			// DockerHub repo/image name.
-	k8s = ' cred2 '
+	k8s = ' cred3 '
     }
     
     stages {    
 	stage ('test') {
 		steps {
 			script {
-				echo " Testing app"
+				echo " This is production branch "
 			}
 		}
 	}
