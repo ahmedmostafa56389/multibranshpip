@@ -16,10 +16,6 @@ spec:
       containers:
         - name: jenk-lap
           image: nginx
-          resources:
-            limits:
-              memory: 128Mi
-              cpu: 500m
           ports:
             - containerPort: 8090
   strategy:
