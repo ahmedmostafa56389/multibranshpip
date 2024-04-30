@@ -7,15 +7,15 @@ spec:
   replicas: 4
   selector:
     matchLabels:
-      app: my-app
+      app: test
   template:
     metadata:
       labels:
-        app: my-app
+        app: test
     spec:
       containers:
-      - name: my-app-container
-        image: your-image:tag
+      - name: container-test
+        image: nginx
         resources:                
           requests:
             memory: "64Mi"        
