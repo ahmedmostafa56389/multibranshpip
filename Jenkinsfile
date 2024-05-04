@@ -4,7 +4,7 @@ pipeline {
     environment {
         dockerHubCredentialsID	    = 'DockerHub'  		    			// DockerHub credentials ID.
         imageName   		    = 'ahmedmoo/nti-app'     			// DockerHub repo/image name.
-	k8s = ' cred3 '
+	k8s = ' home '
     }
     
     stages {    
